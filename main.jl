@@ -4,12 +4,12 @@ cars = dataset("cars")
 
 cars |> @select(:Acceleration, :Name) |> collect
 
-function foo(data, origin)
+function show_plot(data, origin)
     df = data |> @filter(_.Origin==origin) |> DataFrame
 
     return df |> @vlplot(:point, :Acceleration, :Miles_per_Gallon)
 end
 
-p = foo(cars, "USA")
+p = show_plot(cars, "USA")
 
 p |> save("foo.png")
